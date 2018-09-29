@@ -36,7 +36,8 @@ Get-ChildItem $dir -Filter "*.json"  | ForEach-Object {
     $app = $_.BaseName
     Invoke-Expression "$checkver -app $app -dir $dir -update true"
 
-    $file = "$_.FullName"
+    $file = "$_"
+    write-host "$file"
     $json = parse_json $file
     $version = $json.version
 

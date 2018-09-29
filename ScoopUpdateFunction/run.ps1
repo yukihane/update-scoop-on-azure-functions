@@ -35,14 +35,12 @@ $checkver = "$scooproot/bin/checkver.ps1"
 
 $dir = "."
 
-
 Get-ChildItem $dir -Filter "*.json"  | ForEach-Object {
 
     $app = $_.BaseName
     Invoke-Expression "$checkver -app $app -dir $dir -update true"
 
     $file = "$_"
-    write-host "$file"
     $json = parse_json $file
     $version = $json.version
 

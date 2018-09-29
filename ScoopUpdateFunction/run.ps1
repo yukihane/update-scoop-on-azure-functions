@@ -1,9 +1,13 @@
-# $approot="${env:HOME}/site/wwwroot/ScoopUpdateFunction"
-$approot = $EXECUTION_CONTEXT_FUNCTIONDIRECTORY
-$tempdir = "${env:TEMP}"
+Set-Item env:GIT_COMMITTER_NAME "auto-updater"
+Set-Item env:GIT_AUTHOR_NAME "auto-updater"
+Set-Item env:EMAIL "yukihane.feather@gmail.com"
 
 $bucket = "scoop-bucket-yukihane-games"
 $bucketurl = "git@github.com:yukihane/$bucket.git"
+
+# $approot="${env:HOME}/site/wwwroot/ScoopUpdateFunction"
+$approot = $EXECUTION_CONTEXT_FUNCTIONDIRECTORY
+$tempdir = "${env:TEMP}"
 
 # cacheディレクトリ決定のために必要
 Set-Item env:SCOOP "$tempdir/tmp_scoop"
@@ -14,8 +18,6 @@ Set-Item env:PATH "$env:PATH;$approot/bin/git/cmd;$approot/bin/git/usr/bin"
 $id_rsa = "$approot/private/ssh/id_rsa" -replace "\\", "/"
 $ssh_config = "$approot/private/ssh/ssh_config" -replace "\\", "/"
 Set-Item env:GIT_SSH_COMMAND "ssh -i $id_rsa -F $ssh_config"
-$gitconfig = "$approot/private/gitconfig" -replace "\\", "/"
-Set-Item env:GIT_CONFIG $gitconfig
 
 Set-Location "$tempdir"
 if (Test-Path $bucket) {

@@ -1,13 +1,13 @@
 
-= Setup
+# Setup
 
-== Checkout source
+## Checkout source
 
     git clone https://github.com/yukihane/update-scoop-on-azure-functions.git
     cd update-scoop-on-azure-functions/ScoopUpdateFunction/bin/scoop/
     git submodule update -i
 
-== Edit information
+## Edit information
 
 Edit `ScoopUpdateFunction/run.ps1`
 
@@ -18,14 +18,14 @@ Edit `ScoopUpdateFunction/run.ps1`
     $bucket = "scoop-bucket-yukihane-games"
     $bucketurl = "git@github.com:yukihane/$bucket.git"
 
-== Put ssh private key
+## Put ssh private key
 
 Put git-authorized private key as `ScoopUpdateFunction/private/ssh/id_rsa`.
 
-== Archive
+## Archive
 
     zip -r ../deployment.zip ScoopUpdateFunction host.json
 
-== Deploy
+## Deploy
 
     az functionapp deployment source config-zip -n <app_name> -g <group_name> --src ../deployment.zip

@@ -18,6 +18,9 @@ $gitconfig = "$approot/private/gitconfig" -replace "\\", "/"
 Set-Item env:GIT_CONFIG $gitconfig
 
 Set-Location "$tempdir"
+if (Test-Path $bucket) {
+    Remove-Item $bucket -Force -Recurse
+}
 Invoke-Expression "git clone $bucketurl"
 $bucketdir = "$tempdir/$bucket"
 Set-Location "$bucketdir"

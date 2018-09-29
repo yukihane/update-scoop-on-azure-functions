@@ -34,13 +34,13 @@ $dir = "."
 Get-ChildItem $dir -Filter "*.json"  | ForEach-Object {
 
     $app = $_.BaseName
-    Invoke-Expression -Command "$checkver -app $app -dir $dir -update true"
+    Invoke-Expression "$checkver -app $app -dir $dir -update true"
 
     $file = "$_.FullName"
     $json = parse_json $file
     $version = $json.version
 
-    Invoke-Expression git commit $file -m "${app}: Update to version $version"
+    Invoke-Expression "git commit $file -m `"${app}: Update to version $version`""
 }
 
-Invoke-Expression git push
+Invoke-Expression "git push"

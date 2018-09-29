@@ -1,0 +1,4 @@
+[submodule "ScoopUpdateFunction/bin/scoop"]
+	path = ScoopUpdateFunction/bin/scoop
+	url = https://github.com/yukihane/scoop.git
+	branch = fix/path-to-home

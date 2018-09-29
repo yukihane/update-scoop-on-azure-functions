@@ -16,7 +16,7 @@ $scooproot = "$approot/bin/scoop"
 
 Set-Item env:PATH "$env:PATH;$approot/bin/git/cmd;$approot/bin/git/usr/bin"
 $id_rsa = "$approot/private/ssh/id_rsa" -replace "\\", "/"
-$ssh_config = "$approot/private/ssh/ssh_config" -replace "\\", "/"
+$ssh_config = "$approot/config/ssh_config" -replace "\\", "/"
 Set-Item env:GIT_SSH_COMMAND "ssh -i $id_rsa -F $ssh_config"
 
 Set-Location "$tempdir"

@@ -15,7 +15,7 @@ Set-Item env:GIT_SSH_COMMAND "ssh -i $approot/private/ssh/id_rsa"
 Set-Item env:GIT_CONFIG "$approot/private/gitconfig"
 
 Set-Location "$tempdir"
-Invoke-Expression git clone $bucketurl
+Invoke-Expression "git clone $bucketurl"
 $bucketdir = "$tempdir/$bucket"
 Set-Location "$bucketdir"
 

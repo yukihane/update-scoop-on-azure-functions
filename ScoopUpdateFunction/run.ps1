@@ -11,8 +11,10 @@ Set-Item env:SCOOP "$tempdir/tmp_scoop"
 $scooproot = "$approot/bin/scoop"
 
 Set-Item env:PATH "$env:PATH;$approot/bin/git/cmd;$approot/bin/git/usr/bin"
-Set-Item env:GIT_SSH_COMMAND "ssh -i $approot/private/ssh/id_rsa"
-Set-Item env:GIT_CONFIG "$approot/private/gitconfig"
+$id_rsa = "$approot/private/ssh/id_rsa" -replace "\\", "/"
+Set-Item env:GIT_SSH_COMMAND "ssh -i $id_rsa"
+$gitconfig = "$approot/private/gitconfig" -replace "\\", "/"
+Set-Item env:GIT_CONFIG $gitconfig
 
 Set-Location "$tempdir"
 Invoke-Expression "git clone $bucketurl"

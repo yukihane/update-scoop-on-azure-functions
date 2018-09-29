@@ -1,3 +1,0 @@
-[submodule "ScoopUpdateFunction/bin/scoop"]
-	path = ScoopUpdateFunction/bin/scoop
-	url = https://github.com/lukesampson/scoop.git
